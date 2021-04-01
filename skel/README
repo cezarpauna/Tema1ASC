@@ -1,0 +1,40 @@
+Pauna Cezar - 334CB
+Tema 1 Marketplace
+
+Structure
+The assignment was based on multiple producer multiple consumer problem,
+so there are 4 classes (Product, Producer, Consumer and Marketplace).
+Marketplace synchronizes consumers and producers. Consumer is
+sending different cart commands (add from cart/remove from cart) and 
+sleeps for a given amount of time (different times when adding/removing 
+fail). After going through every cart command, the order is placed
+(place_order function from marketplace returns a list of products
+in the given cart after finishing all commands) and the products are
+printed. Producer is continuously publishing products and sleeps.
+Marketplace has a list of queues (the value at the index producer_id 
+is a list of length = queue, this way I can append and remove
+without a lock), a list of all products in the marketplace (easy 
+way to add and remove products from the marketplace), list of carts 
+(to keep products based on cart_id) and a dictionary with key = product 
+and value = producer (mapping a product with its producer is a good idea 
+beacuse when adding a product to the cart we need to remove an element from
+the queue, so we need to know who produced the product).
+As of synchronization methods, I used thread-safe commands 
+(append, remove, pop).
+I think the assignment is very useful for practicing threads synchronization 
+and it has a good difficulty.
+I don't think my implementation is very efficient, because I didn't pay 
+too much attention to the data structures I used.
+
+Implementation
+I think I implemented everything for this assignment.
+I found it difficult to use the given code at first, but in the end I 
+found it very helpful.
+
+References:
+https://ocw.cs.pub.ro/courses/asc/laboratoare/02
+https://ocw.cs.pub.ro/courses/asc/laboratoare/03
+
+Git (private repo):
+https://github.com/cezarpauna/Tema1ASC
+
