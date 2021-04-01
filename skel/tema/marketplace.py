@@ -85,7 +85,7 @@ class Marketplace:
 
         If we can add the product, decrement the queue of that producer,
         append the product to the cart and
-        remove the product from the marketplace. Lock need for updating queue_producers
+        remove the product from the marketplace.
         """
 
         if product not in self.products:
@@ -111,6 +111,7 @@ class Marketplace:
         """
         self.carts[cart_id].remove(product)
         self.products.append(product)
+        # append one element to the queue of that producer (possible restriction for publish)
         self.queue_producers[self.producer_product[product]].append(0)
 
     def place_order(self, cart_id):
